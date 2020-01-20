@@ -5,8 +5,9 @@ peti-kemas-fe/node_modules
 peti-kemas-be/node_modules
 
 # next.js
-/.next/
-/out/
+peti-kemas-fe/.next
+peti-kemas-fe/out
+peti-kemas-fe/.*
 
 # production
 peti-kemas-fe/build
