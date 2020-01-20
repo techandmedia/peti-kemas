@@ -1,0 +1,4 @@
+db:
+  database: 'peti_kemas'
+  username: 'root'
+  password: ''

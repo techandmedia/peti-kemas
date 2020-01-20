@@ -1,0 +1,7 @@
+db:
+  database: 'peti_kemas'
+  username: 'root'
+  password: ''
+
+jwt:
+  secret: 'db!123peti_kemas'
