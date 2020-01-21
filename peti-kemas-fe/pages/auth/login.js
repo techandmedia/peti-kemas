@@ -11,7 +11,7 @@ import {
 } from "antd";
 
 const { Title } = Typography;
-const backgroundLogin = "images/containers-login-page.jpg"
+const backgroundLogin = "images/containers-login-page.jpg";
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
@@ -31,17 +31,27 @@ class NormalLoginForm extends React.Component {
         justify="center"
         style={{
           marginTop: 10,
+          minHeight: '30rem',
+          width: '100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundImage: `url(${backgroundLogin})`
           // backgroundImage: `url(images/containers-login-page.jpg)`
         }}
       >
-        <div style={{
-          // minHeight: '30rem',
-          // width: '100%',
-          // backgroundPosition: 'center',
-          // backgroundRepeat: 'no-repeat',
-          // backgroundSize: 'cover',
-          // backgroundImage: `url(${backgroundLogin})`
-        }}>
+        <div
+          style={
+            {
+              // minHeight: '30rem',
+              // width: '100%',
+              // backgroundPosition: 'center',
+              // backgroundRepeat: 'no-repeat',
+              // backgroundSize: 'cover',
+              // backgroundImage: `url(${backgroundLogin})`
+            }
+          }
+        >
           <Title level={4}>Pelanggan Log In</Title>
           <Divider />
 
@@ -77,9 +87,7 @@ class NormalLoginForm extends React.Component {
             </Form.Item>
             <Form.Item>
               <Link href="">
-                <a className="login-form-forgot">
-                  Lupa password
-              </a>
+                <a className="login-form-forgot">Lupa password</a>
               </Link>
               <Button
                 type="primary"
