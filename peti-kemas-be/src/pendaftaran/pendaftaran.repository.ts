@@ -6,6 +6,7 @@ import {
 import { EntityRepository, Repository } from 'typeorm';
 import { Pendaftaran } from './pendaftaran.entity';
 import { CreatePendaftaranDto } from './dto/create-pendaftaran.dto';
+import { StatusPerbaikan } from './enum/status-perbaikan.enum';
 
 @EntityRepository(Pendaftaran)
 export class PendaftaranRepository extends Repository<Pendaftaran> {
@@ -30,6 +31,7 @@ export class PendaftaranRepository extends Repository<Pendaftaran> {
     pendaftaran.alamat_lengkap = alamat_lengkap;
     pendaftaran.email = email;
     pendaftaran.jumlah_peti_kemas = jumlah_peti_kemas;
+    pendaftaran.status_perbaikan = StatusPerbaikan.DAFTAR;
     pendaftaran.nomor_telepon = nomor_telepon;
     pendaftaran.bukti_bayar_dp = bukti_bayar_dp;
 

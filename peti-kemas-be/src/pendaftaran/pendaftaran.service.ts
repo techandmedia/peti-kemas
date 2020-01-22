@@ -64,7 +64,16 @@ export class PendaftaranService {
 
   async getAllPendaftaran(): Promise<any> {
     const query = await this.pendaftaranRepository.find({
-      select: ['nik', 'email', 'nama_lengkap', 'bukti_bayar_dp'],
+      select: [
+        'id_pendaftaran',
+        'nomor_antrian',
+        'nama_lengkap',
+        'nama_perusahaan',
+        'jumlah_peti_kemas',
+        'status_perbaikan',
+        'updated_at',
+      ],
+      order: { updated_at: 'DESC' },
     });
 
     return {

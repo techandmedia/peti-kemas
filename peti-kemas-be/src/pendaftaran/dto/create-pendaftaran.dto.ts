@@ -1,11 +1,24 @@
+import { IsNotEmpty } from 'class-validator';
 export class CreatePendaftaranDto {
+  @IsNotEmpty()
   nik: string;
+
+  @IsNotEmpty()
   nama_lengkap: string;
-  nama_perusahaan: string;
+
+  @IsNotEmpty()
   alamat_lengkap: string;
+
+  @IsNotEmpty()
   nomor_telepon: string;
-  email: string;
+
+  @IsNotEmpty()
   jumlah_peti_kemas: number;
+
+  @IsNotEmpty()
   bukti_bayar_dp: string;
-  bukti_bayar_pelunasan: string;
+
+  nama_perusahaan: string;
+
+  email: string;
 }

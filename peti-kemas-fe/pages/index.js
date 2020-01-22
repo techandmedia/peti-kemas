@@ -1,4 +1,4 @@
-import DefaultPage from "./auth/registration";
+import DefaultPage from "../modules/perbaikan";
 
 export default function Home() {
   return <DefaultPage />;

@@ -1,9 +1,10 @@
-import { useEffect, useState, createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import { selectMenuReducer, userReducer } from "../reducers";
 import { useModal } from "components/modal";
 
 const MenuContext = createContext(null);
 const UserContext = createContext(null);
+const StatusContext = createContext(null);
 
 const master = ["master pusat", "akademik", "civitas"];
 const pmbOnline = ["konfigurasi", "maba"];
@@ -48,14 +49,17 @@ export default function GlobalProvider(props) {
     key: "home"
   });
   const [modal, dispatchModal] = useModal();
+  const [status, setStatus] = useState(false)
 
   return (
     <MenuContext.Provider value={{ menu, dispatchMenu, modal, dispatchModal }}>
       <UserContext.Provider value={{ user, dispatchUser }}>
-        {props.children}
+        <StatusContext.Provider value={{ status, setStatus }}>
+          {props.children}
+        </StatusContext.Provider>
       </UserContext.Provider>
     </MenuContext.Provider>
   );
 }
 
-export { MenuContext, UserContext };
+export { MenuContext, UserContext, StatusContext };
