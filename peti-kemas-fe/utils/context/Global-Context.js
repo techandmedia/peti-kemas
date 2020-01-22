@@ -1,6 +1,6 @@
 import { useEffect, useState, createContext, useReducer } from "react";
 import { selectMenuReducer, userReducer } from "../reducers";
-import { useModal } from 'components/modal';
+import { useModal } from "components/modal";
 
 const MenuContext = createContext(null);
 const UserContext = createContext(null);

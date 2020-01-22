@@ -5,3 +5,7 @@
 .ant-layout {
   background: #ff8c00;
 }
+
+.ant-modal-body {
+  padding-top: 0px;
+}

@@ -1,5 +1,5 @@
 import { Table, Divider, Tag } from "antd";
-import { style } from 'utils/styles/background'
+import { style } from "utils/styles/background";
 
 const columns = [
   {
@@ -103,14 +103,12 @@ const data = [
   }
 ];
 
-
-
 export default function Registration() {
-
   return (
-    <div style={style} >
-      <div className="new-background" >
+    <div style={style}>
+      <div className="new-background">
         <Table columns={columns} dataSource={data} />
-      </div></div >
+      </div>
+    </div>
   );
 }
