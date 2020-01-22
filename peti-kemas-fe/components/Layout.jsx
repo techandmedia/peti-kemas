@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Layout, Menu, Icon, Button } from 'antd';
+import { Layout, Menu, Icon, Button, Typography } from 'antd';
 import { MenuContext } from 'utils/context/Global-Context';
 import Modal from 'components/modal';
 import Link from 'next/link';
@@ -8,6 +8,7 @@ import Pendaftaran from '../modules/pendaftaran';
 import 'utils/styles/index.css';
 import 'utils/styles/ant-override.css';
 
+const { Title } = Typography;
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
@@ -32,7 +33,6 @@ export default function CustomLayout(props) {
       </Modal>
 
       <Header className='header'>
-        <div className='logo' />
         <Menu
           mode='horizontal'
           defaultSelectedKeys={['2']}
@@ -43,7 +43,11 @@ export default function CustomLayout(props) {
           style={{ lineHeight: '48px' }}>
           <Menu.Item key='home'>
             <Link href='/'>
-              <a>Home</a>
+              <a>
+                <Title className='title' level={3}>
+                  CV. BMC
+                </Title>
+              </a>
             </Link>
           </Menu.Item>
 
@@ -51,7 +55,7 @@ export default function CustomLayout(props) {
            * Dalam hal ini, admin akan dirender paling kanan (float right)
            */}
           <Menu.Item key='admin' style={{ float: 'right' }}>
-            <Link href='/admin'>
+            <Link href='/auth/admin'>
               <a>Admin</a>
             </Link>
           </Menu.Item>
@@ -71,10 +75,8 @@ export default function CustomLayout(props) {
         </Menu>
       </Header>
       <Layout>
-        <Sidebar />
-        <Layout
-        // style={{ padding: '0 24px 24px' }}
-        >
+        <Layout>
+          <Sidebar />
           <Content
             style={{
               background: '#fff',
@@ -95,48 +97,33 @@ function SideMenu() {
     <Sider width={200} style={{ background: '#fff' }}>
       <Menu
         mode='inline'
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
+        defaultSelectedKeys={['perbaikan']}
+        defaultOpenKeys={['main-menu']}
         style={{ height: '100%', borderRight: 0 }}>
         <SubMenu
-          key='sub1'
+          key='main-menu'
           title={
             <span>
               <Icon type='user' />
-              subnav 1
+              Pelanggan
             </span>
           }>
-          <Menu.Item key='1'>option1</Menu.Item>
-          <Menu.Item key='2'>option2</Menu.Item>
-          <Menu.Item key='3'>option3</Menu.Item>
-          <Menu.Item key='4'>option4</Menu.Item>
+          <Menu.Item key='perbaikan'>Perbaikan</Menu.Item>
         </SubMenu>
         <SubMenu
-          key='sub2'
+          key='laporan'
           title={
             <span>
               <Icon type='laptop' />
-              subnav 2
+              Laporan
             </span>
           }>
-          <Menu.Item key='5'>option5</Menu.Item>
-          <Menu.Item key='6'>option6</Menu.Item>
-          <Menu.Item key='7'>option7</Menu.Item>
-          <Menu.Item key='8'>option8</Menu.Item>
+          <Menu.Item key='pembayaran'>Pembayaran</Menu.Item>
+          <Menu.Item key='pelanggan'>Pelanggan</Menu.Item>
         </SubMenu>
-        <SubMenu
-          key='sub3'
-          title={
-            <span>
-              <Icon type='notification' />
-              subnav 3
-            </span>
-          }>
-          <Menu.Item key='9'>option9</Menu.Item>
-          <Menu.Item key='10'>option10</Menu.Item>
-          <Menu.Item key='11'>option11</Menu.Item>
-          <Menu.Item key='12'>option12</Menu.Item>
-        </SubMenu>
+        <Menu.Item key='logout'>
+          <a>Logout</a>
+        </Menu.Item>
       </Menu>
     </Sider>
   );

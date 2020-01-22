@@ -21,9 +21,6 @@ export class AuthService {
       select: ['username'],
       where: { username: search },
     });
-
-    // this.logger.log(search);
-    // this.logger.log(found);
   }
 
   async getAllUsers(): Promise<User[]> {
@@ -43,21 +40,27 @@ export class AuthService {
     title: string;
     message: string;
   }> {
-    const username = await this.userRepository.validateUserPassword(
-      authCredentialsDto,
-    );
+    // const username = await this.userRepository.validateUserPassword(
+    //   authCredentialsDto,
+    // );
 
-    // this.logger.log(username);
+    const { username, password } = authCredentialsDto;
 
-    if (!username) {
-      throw new UnauthorizedException('Invalid credentials');
+    // this.logger.log(username, 'Username');
+
+    if (username !== 'admin' || password !== 'admin') {
+      throw new UnauthorizedException({
+        code: 301,
+        title: 'Login Error',
+        message: 'Invalid credentials',
+      });
     }
 
     const payload: JwtPayload = { username };
     const accessToken = await this.jwtService.sign(payload);
     const code = 201;
     const title = 'Sign In';
-    const message = 'Sign In Success';
+    const message = 'Anda berhasil login';
     this.logger.debug(
       `Generated JWT Token with payload ${JSON.stringify(payload)}`,
     );

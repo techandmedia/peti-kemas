@@ -17,7 +17,7 @@ const akunSaya = ["akun saya"];
 export default function GlobalProvider(props) {
   const [user, dispatchUser] = useReducer(userReducer, {
     // isUserLoggedIn: false,
-    isUserLoggedIn: false,
+    isUserLoggedIn: true,
     defaultPage: "/",
     /**
      * Modul di dalam dashboard
@@ -49,7 +49,7 @@ export default function GlobalProvider(props) {
     key: "home"
   });
   const [modal, dispatchModal] = useModal();
-  const [status, setStatus] = useState(false)
+  const [status, setStatus] = useState(false);
 
   return (
     <MenuContext.Provider value={{ menu, dispatchMenu, modal, dispatchModal }}>

@@ -6,6 +6,6 @@ const data = {
   nomor_telepon: "021-123123123",
   email: "eko.andri@icloud.com",
   jumlah_peti_kemas: 2
-}
+};
 
-export { data }
+export { data };

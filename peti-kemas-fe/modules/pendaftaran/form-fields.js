@@ -1,4 +1,4 @@
-import { data } from './mock-data'
+import { data } from "./mock-data";
 
 const formFields = [
   {
@@ -54,12 +54,13 @@ const formFields = [
   {
     label: "email",
     field: "email",
-    initialValue: data.email,
+    initialValue: data.email
   },
   {
     label: "jumlah peti kemas",
     field: "jumlah_peti_kemas",
-    initialValue: data.jumlah_peti_kemas, rules: [
+    initialValue: data.jumlah_peti_kemas,
+    rules: [
       {
         required: true,
         message: "masukkan jumlah peti kemas!"

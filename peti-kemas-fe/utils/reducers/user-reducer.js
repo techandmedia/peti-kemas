@@ -1,3 +1,5 @@
+import Router from "next/router";
+
 export default function menuReducer(state, action) {
   // console.log(state, action);
   const { type, data, cookie } = action;
@@ -7,6 +9,7 @@ export default function menuReducer(state, action) {
         ...state
       };
     case "login-success":
+      Router.push("/dashboard");
       return {
         ...state,
         isUserLoggedIn: true,

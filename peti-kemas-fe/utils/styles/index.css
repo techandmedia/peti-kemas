@@ -2,12 +2,10 @@
   background: white;
 }
 
-.logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 28px 16px 0;
+.title {
+  margin: 6px 50px 0 0;
   float: left;
+  z-index: 9999;
 }
 
 .login-form {
@@ -38,14 +36,14 @@
 } */
 
 .new-background {
-  margin-top: "10px";
+  /* margin-top: "10px";
   min-height: "880px";
   height: "100%";
   width: "100%";
   background-position: "center";
   background-repeat: "no-repeat";
-  background-size: "cover";
+  background-size: "cover"; */
   background: white;
   z-index: 999;
-  opacity: 0.8;
+  opacity: 0.9;
 }

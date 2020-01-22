@@ -60,9 +60,7 @@ export default function BuktiBerkas(props) {
               alt='example'
               src={`http://localhost:3001/files/bukti-bayar-dp/${props.imgPath}`}
             />
-          }>
-          <Meta title='Europe Street beat' description='www.instagram.com' />
-        </Card>
+          }></Card>
       </Modal>
       <Form {...formItemLayout} onSubmit={onFormSubmit}>
         <Form.Item

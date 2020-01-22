@@ -71,7 +71,10 @@ export class PendaftaranService {
         'nama_perusahaan',
         'jumlah_peti_kemas',
         'status_perbaikan',
+        'created_at',
         'updated_at',
+        'bukti_bayar_dp',
+        'bukti_bayar_pelunasan',
       ],
       order: { updated_at: 'DESC' },
     });
