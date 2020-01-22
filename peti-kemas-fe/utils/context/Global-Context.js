@@ -1,5 +1,6 @@
 import { useEffect, useState, createContext, useReducer } from "react";
 import { selectMenuReducer, userReducer } from "../reducers";
+import { useModal } from 'components/modal';
 
 const MenuContext = createContext(null);
 const UserContext = createContext(null);
@@ -46,9 +47,10 @@ export default function GlobalProvider(props) {
   const [menu, dispatchMenu] = useReducer(selectMenuReducer, {
     key: "home"
   });
+  const [modal, dispatchModal] = useModal();
 
   return (
-    <MenuContext.Provider value={{ menu, dispatchMenu }}>
+    <MenuContext.Provider value={{ menu, dispatchMenu, modal, dispatchModal }}>
       <UserContext.Provider value={{ user, dispatchUser }}>
         {props.children}
       </UserContext.Provider>

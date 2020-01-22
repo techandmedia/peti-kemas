@@ -1,5 +1,10 @@
+import { useContext } from 'react';
 import { Layout, Menu, Icon } from 'antd';
+import { MenuContext } from 'utils/context/Global-Context';
+import Modal from 'components/modal';
 import Link from 'next/link';
+
+import Pendaftaran from '../modules/pendaftaran';
 import 'utils/styles/index.css';
 import 'utils/styles/ant-override.css';
 
@@ -8,34 +13,54 @@ const { Header, Content, Sider } = Layout;
 
 export default function CustomLayout(props) {
   const { isUserLoggedIn } = props;
-  console.log(props);
-
+  const { modal, dispatchModal } = useContext(MenuContext);
   const Sidebar = () => isUserLoggedIn && <SideMenu />;
+
+  function handleMenu(e) {
+    // console.log(e.item.props.name);
+    const key = e.key;
+    const name = e.item.props.name;
+    if ((key === 'daftar')) {
+      dispatchModal({ type: 'success', results: { title: name } });
+    }
+  }
 
   return (
     <Layout>
+      <Modal modal={modal} dispatchModal={dispatchModal}>
+        <Pendaftaran />
+      </Modal>
+
       <Header className='header'>
         <div className='logo' />
         <Menu
           mode='horizontal'
           defaultSelectedKeys={['2']}
+          onClick={handleMenu}
           /**
            * Pastikan lineHeigth ini sama dengan heigth di override css
            */
           style={{ lineHeight: '48px' }}>
-          <Menu.Item key='1'>
+          <Menu.Item key='home'>
             <Link href='/'>Home</Link>
           </Menu.Item>
 
           {/* Yang deklarasi di awal, maka component itu lah yang akan mulai *
            * Dalam hal ini, admin akan dirender paling kanan (float right)
            */}
-          <Menu.Item key='2' style={{ float: 'right' }}>
+          <Menu.Item key='admin' style={{ float: 'right' }}>
             <Link href='/admin'>Admin</Link>
           </Menu.Item>
 
-          <Menu.Item key='3' style={{ float: 'right' }}>
+          <Menu.Item key='contact' style={{ float: 'right' }}>
             <Link href='/contact'>Contact</Link>
+          </Menu.Item>
+
+          <Menu.Item
+            key='daftar'
+            name='Pendaftaran Perbaikan Peti Kemas'
+            style={{ float: 'right' }}>
+            Daftar
           </Menu.Item>
         </Menu>
       </Header>
@@ -48,7 +73,7 @@ export default function CustomLayout(props) {
             style={{
               background: '#fff',
               padding: 12,
-              marginTop: 12,
+              marginTop: 6,
               minHeight: 380,
             }}>
             {props.children}

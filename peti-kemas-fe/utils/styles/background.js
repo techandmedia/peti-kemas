@@ -5,7 +5,7 @@ const style = {
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  backgroundImage: 'url("images/containers-login-page.jpg")',
+  backgroundImage: 'url("images/containers-login-page.jpg")', zIndex: "1"
 }
 
 export { style }
