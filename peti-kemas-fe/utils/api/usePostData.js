@@ -1,10 +1,10 @@
 import { useState, useEffect, useReducer, useContext } from "react";
 import axios from "axios";
 
-const URL =
-  process.env.NODE_ENV === "production"
-    ? process.env.URL_PROD
-    : process.env.URL_DEV;
+const URL = 'http://localhost:3001/'
+// process.env.NODE_ENV === "production"
+//   ? process.env.URL_PROD
+//   : process.env.URL_DEV;
 
 // ===== USE REDUCER ==========
 function fetchReducer(state, action) {

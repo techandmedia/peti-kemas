@@ -5,10 +5,8 @@ peti-kemas-fe/node_modules
 peti-kemas-be/node_modules
 
 # next.js
-peti-kemas-fe/.next
-peti-kemas-fe/.next/
+!/peti-kemas-fe/.next
 peti-kemas-fe/out
-peti-kemas-fe/.*
 
 # production
 peti-kemas-fe/build
@@ -26,3 +24,5 @@ peti-kemas-fe/.next/static/runtime/amp.js
 peti-kemas-fe/.next/static/runtime/amp.js.map
 peti-kemas-fe/.next/static/runtime/main.js
 peti-kemas-fe/.next/static/runtime/main.js.map
+peti-kemas-fe/.next/
+peti-kemas-be/images/

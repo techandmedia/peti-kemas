@@ -10,24 +10,24 @@ import usePostData from 'utils/api/usePostData';
 const { Meta } = Card;
 
 export default function BuktiBerkas(props) {
-  const [buktiBayarTertulis, postBuktiBayarTertulis] = usePostData('', '');
+  const [buktiBayarDP, postBayarDP] = usePostData('', '');
   const [modal, dispatchModal] = useModal();
   const { getFieldDecorator, validateFieldsAndScroll } = props.form;
   const [file, setFile] = useState(null);
 
   useEffect(() => {
-    const { isLoading, isError, code } = buktiBayarTertulis;
-    // console.log('buktibayartertulis', path);
+    const { isLoading, isError, code } = buktiBayarDP;
+    // console.log('buktiBayarDP', path);
     if (!isLoading && code >= 200 && code < 300) {
-      const path = buktiBayarTertulis.data.filename;
+      const path = buktiBayarDP.data.filename;
       props.setPath(path);
-      dispatchModal({ type: 'success', results: buktiBayarTertulis });
+      dispatchModal({ type: 'success', results: buktiBayarDP });
     }
 
     if (!isLoading && isError && code >= 300) {
-      dispatchModal({ type: 'error', results: buktiBayarTertulis });
+      dispatchModal({ type: 'error', results: buktiBayarDP });
     }
-  }, [buktiBayarTertulis]);
+  }, [buktiBayarDP]);
 
   function onChange(e) {
     // console.log(e.target.files[0])
@@ -38,16 +38,18 @@ export default function BuktiBerkas(props) {
     e.preventDefault();
     validateFieldsAndScroll((err, values) => {
       console.log('Received values of form: ', values);
-      // if (!err) {
-      //   postBuktiBayarTertulis(
-      //     'files/upload-bukti-bayar/tertulis',
-      //     file,
-      //     'file',
-      //     'bukti-bayar-tertulis',
-      //   );
-      // }
+      if (!err) {
+        postBayarDP(
+          'files/upload-bukti-bayar/dp',
+          file, // hasil extract, biasanya berupa file name
+          'file', // key agar postData di API bisa membedakan mana yang file mana yang json
+          'bukti-bayar-dp', // field yang diperlukan nestjs untuk intercept 
+        );
+      }
     });
   }
+
+  console.log("Bukti Bayar DP",props.imgPath)
 
   return (
     <React.Fragment>
@@ -58,7 +60,7 @@ export default function BuktiBerkas(props) {
           cover={
             <img
               alt='example'
-              src={`http://localhost:3001/files/bukti-bayar-tertulis/${props.imgPath}`}
+              src={`http://localhost:3001/files/bukti-bayar-dp/${props.imgPath}`}
             />
           }>
           <Meta title='Europe Street beat' description='www.instagram.com' />

@@ -21,78 +21,55 @@ export class UploadFilesController {
   /**
    * Get Files
    */
-  @Get('/bukti-bayar-tertulis/:imgpath')
+  @Get('/bukti-bayar-dp/:imgpath')
   getTertulis(@Param('imgpath') image, @Res() res) {
-    return res.sendFile(image, { root: './images/bukti-bayar/tertulis' });
+    return res.sendFile(image, { root: './images/bukti-bayar/dp' });
   }
 
-  @Get('/bukti-bayar-kesehatan/:imgpath')
+  @Get('/bukti-bayar-pelunasan/:imgpath')
   getKesehatan(@Param('imgpath') image, @Res() res) {
-    return res.sendFile(image, { root: './images/bukti-bayar/kesehatan' });
-  }
-
-  @Get('/bukti-bayar-administrasi/:imgpath')
-  getAdministrasi(@Param('imgpath') image, @Res() res) {
-    return res.sendFile(image, { root: './images/bukti-bayar/administrasi' });
+    return res.sendFile(image, { root: './images/bukti-bayar/pelunasan' });
   }
 
   /****************************************************************************
    * Post Files
    */
-  @Post('/upload-bukti-bayar/tertulis')
+  @Post('/upload-bukti-bayar/dp')
   @UseInterceptors(
     /**
-     * Perhatikan cara penulisan field 'bukti-bayar-tertulis'
+     * Perhatikan cara penulisan field 'bukti-bayar-dp'
      * atau 'file' di bawah ini
      * Nama field ini harus sama dengan field di Postman atau
      * fieldName dari postData
      */
     // FileInterceptor('file', {
-    FileInterceptor('bukti-bayar-tertulis', {
+    FileInterceptor('bukti-bayar-dp', {
       storage: diskStorage({
-        destination: './images/bukti-bayar/tertulis',
+        destination: './images/bukti-bayar/dp',
         filename: editFileName,
       }),
       fileFilter: imageFileFilter,
     }),
   )
-  buktiBayarTertulis(@UploadedFile() file): Promise<any> {
+  buktiBayarDp(@UploadedFile() file): Promise<any> {
     return this.uploadFilesService.buktiBayar(file);
   }
 
-  @Post('/upload-bukti-bayar/kesehatan')
+  @Post('/upload-bukti-bayar/pelunasan')
   @UseInterceptors(
     /**
-     * Nama field 'bukti-bayar-kesehatan'
+     * Nama field 'bukti-bayar-pelunasan'
      * Baik itu di postman ataupun field upload UI
      */
-    FileInterceptor('bukti-bayar-kesehatan', {
+    FileInterceptor('bukti-bayar-pelunasan', {
       storage: diskStorage({
-        destination: './images/bukti-bayar/kesehatan',
+        destination: './images/bukti-bayar/pelunasan',
         filename: editFileName,
       }),
       fileFilter: imageFileFilter,
     }),
   )
   buktiBayarKesehatan(@UploadedFile() file): Promise<any> {
-    return this.uploadFilesService.buktiBayar(file);
-  }
-
-  @Post('/upload-bukti-bayar/administrasi')
-  @UseInterceptors(
-    /**
-     * Nama field 'bukti-bayar-kesehatan'
-     * Baik itu di postman ataupun field upload UI
-     */
-    FileInterceptor('bukti-bayar-administrasi', {
-      storage: diskStorage({
-        destination: './images/bukti-bayar/administrasi',
-        filename: editFileName,
-      }),
-      fileFilter: imageFileFilter,
-    }),
-  )
-  buktiBayarAdministrasi(@UploadedFile() file): Promise<any> {
     return this.uploadFilesService.buktiBayar(file);
   }
 }
