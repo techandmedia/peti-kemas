@@ -1,6 +1,0 @@
-export enum StatusUjian {
-  LULUS = 'LULUS',
-  TIDAK_LULUS = 'TIDAK LULUS',
-  TERDAFTAR = 'TERDAFTAR',
-  TIDAK_TERDAFTAR = 'TIDAK TERDAFTAR',
-}

@@ -9,16 +9,22 @@ export class Pendaftaran extends BaseEntity {
   nik: string;
 
   @Column()
-  email: string;
+  nama_lengkap: string;
 
   @Column()
-  nama_lengkap: string;
+  nama_perusahaan: string;
 
   @Column()
   alamat_lengkap: string;
 
   @Column()
-  nomor_hp: string;
+  nomor_telepon: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  jumlah_peti_kemas: number;
 
   @Column()
   bukti_bayar_dp: string;

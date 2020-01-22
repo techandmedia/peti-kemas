@@ -43,13 +43,11 @@ export default function BuktiBerkas(props) {
           'files/upload-bukti-bayar/dp',
           file, // hasil extract, biasanya berupa file name
           'file', // key agar postData di API bisa membedakan mana yang file mana yang json
-          'bukti-bayar-dp', // field yang diperlukan nestjs untuk intercept 
+          'bukti-bayar-dp', // field yang diperlukan nestjs untuk intercept
         );
       }
     });
   }
-
-  console.log("Bukti Bayar DP",props.imgPath)
 
   return (
     <React.Fragment>
@@ -95,7 +93,7 @@ export default function BuktiBerkas(props) {
           })(<Input type='file' key='Bukti Bayar DP' onChange={onChange} />)}
         </Form.Item>
 
-        <Form.Item {...tailFormItemLayout}>
+        <Form.Item {...tailFormItemLayout} style={{ marginBottom: '0px' }}>
           <Button type='danger' htmlType='submit' icon='upload'>
             Upload DP
           </Button>

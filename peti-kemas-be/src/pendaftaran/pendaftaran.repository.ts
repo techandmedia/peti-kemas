@@ -14,19 +14,23 @@ export class PendaftaranRepository extends Repository<Pendaftaran> {
   async createTask(pendaftaranUjianDto: CreatePendaftaranDto): Promise<any> {
     const {
       nik,
-      email,
       nama_lengkap,
+      nama_perusahaan,
+      email,
       alamat_lengkap,
-      nomor_hp,
+      jumlah_peti_kemas,
+      nomor_telepon,
       bukti_bayar_dp,
     } = pendaftaranUjianDto;
 
     const pendaftaran = new Pendaftaran();
     pendaftaran.nik = nik;
-    pendaftaran.email = email;
     pendaftaran.nama_lengkap = nama_lengkap;
+    pendaftaran.nama_perusahaan = nama_perusahaan;
     pendaftaran.alamat_lengkap = alamat_lengkap;
-    pendaftaran.nomor_hp = nomor_hp;
+    pendaftaran.email = email;
+    pendaftaran.jumlah_peti_kemas = jumlah_peti_kemas;
+    pendaftaran.nomor_telepon = nomor_telepon;
     pendaftaran.bukti_bayar_dp = bukti_bayar_dp;
 
     try {
@@ -56,6 +60,7 @@ export class PendaftaranRepository extends Repository<Pendaftaran> {
      * Tidak perlu mengirimkan semua respon
      */
     delete pendaftaran.id_pendaftaran;
+    delete pendaftaran.nomor_telepon;
     delete pendaftaran.alamat_lengkap;
     delete pendaftaran.bukti_bayar_dp;
 

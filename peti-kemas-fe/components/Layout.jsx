@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Button } from 'antd';
 import { MenuContext } from 'utils/context/Global-Context';
 import Modal from 'components/modal';
 import Link from 'next/link';
@@ -20,7 +20,7 @@ export default function CustomLayout(props) {
     // console.log(e.item.props.name);
     const key = e.key;
     const name = e.item.props.name;
-    if ((key === 'daftar')) {
+    if (key === 'daftar') {
       dispatchModal({ type: 'success', results: { title: name } });
     }
   }
@@ -42,25 +42,31 @@ export default function CustomLayout(props) {
            */
           style={{ lineHeight: '48px' }}>
           <Menu.Item key='home'>
-            <Link href='/'>Home</Link>
+            <Link href='/'>
+              <a>Home</a>
+            </Link>
           </Menu.Item>
 
           {/* Yang deklarasi di awal, maka component itu lah yang akan mulai *
            * Dalam hal ini, admin akan dirender paling kanan (float right)
            */}
           <Menu.Item key='admin' style={{ float: 'right' }}>
-            <Link href='/admin'>Admin</Link>
+            <Link href='/admin'>
+              <a>Admin</a>
+            </Link>
           </Menu.Item>
 
           <Menu.Item key='contact' style={{ float: 'right' }}>
-            <Link href='/contact'>Contact</Link>
+            <Link href='/contact'>
+              <a>Contact</a>
+            </Link>
           </Menu.Item>
 
           <Menu.Item
             key='daftar'
             name='Pendaftaran Perbaikan Peti Kemas'
             style={{ float: 'right' }}>
-            Daftar
+            <Button type='primary'>Daftar</Button>
           </Menu.Item>
         </Menu>
       </Header>

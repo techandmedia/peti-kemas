@@ -1,15 +1,14 @@
-import { Controller, Post,Body } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { CreatePendaftaranDto } from './dto/create-pendaftaran.dto';
 import { Pendaftaran } from './pendaftaran.entity';
 import { PendaftaranService } from './pendaftaran.service';
 
-
 @Controller('pendaftaran')
 export class PendaftaranController {
-  constructor(private tPendaftaranUjianService: PendaftaranService) {}
+  constructor(private pendaftaran: PendaftaranService) {}
 
   @Post()
-  getPendaftaranUjian(
+  getPendaftaran(
     @Body('type') type: string,
     @Body('search') search: string,
     @Body('page') page: number,
@@ -20,24 +19,19 @@ export class PendaftaranController {
 
     switch (type) {
       case 'create-pendaftaran':
-        query = this.tPendaftaranUjianService.createPendaftaran(
-          createPendaftarDto,
-        );
+        query = this.pendaftaran.createPendaftaran(createPendaftarDto);
         break;
 
       case 'get-page':
-        query = this.tPendaftaranUjianService.getPagePendaftaran(
-          page,
-          amount,
-        );
+        query = this.pendaftaran.getPagePendaftaran(page, amount);
         break;
 
       case 'get-all':
-        query = this.tPendaftaranUjianService.getAllPendaftaran();
+        query = this.pendaftaran.getAllPendaftaran();
         break;
 
       case 'search':
-        query = this.tPendaftaranUjianService.searchPendaftaran(search);
+        query = this.pendaftaran.searchPendaftaran(search);
         break;
 
       default:

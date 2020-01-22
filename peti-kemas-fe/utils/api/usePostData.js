@@ -1,7 +1,7 @@
 import { useState, useEffect, useReducer, useContext } from "react";
 import axios from "axios";
 
-const URL = 'http://localhost:3001/'
+const URL = "http://localhost:3001/";
 // process.env.NODE_ENV === "production"
 //   ? process.env.URL_PROD
 //   : process.env.URL_DEV;
