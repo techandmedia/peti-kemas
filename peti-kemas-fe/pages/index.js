@@ -1,5 +1,6 @@
-import LoginPage from "./auth/login";
+import DefaultPage from "./auth/registration";
 
 export default function Home() {
-  return <LoginPage />;
+  // return <h1>TES</h1>;
+  return <DefaultPage />;
 }

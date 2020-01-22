@@ -6,6 +6,7 @@ peti-kemas-be/node_modules
 
 # next.js
 peti-kemas-fe/.next
+peti-kemas-fe/.next/
 peti-kemas-fe/out
 peti-kemas-fe/.*
 
@@ -21,3 +22,7 @@ peti-kemas-be/dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+peti-kemas-fe/.next/static/runtime/amp.js
+peti-kemas-fe/.next/static/runtime/amp.js.map
+peti-kemas-fe/.next/static/runtime/main.js
+peti-kemas-fe/.next/static/runtime/main.js.map

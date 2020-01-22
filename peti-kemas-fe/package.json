@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "format": "prettier --write \"next.config.js\" \"components/**/*.js\" \"modules/**/*.js\" \"utils/**/*.js\" \"pages/**/*.js\" \"test/**/*.js\"",
-    "dev": "yarn clean && cross-env NODE_ENV=development next",
-    "build": "yarn clean && cross-env NODE_ENV=production next build",
+    "dev": "npm run clean && cross-env NODE_ENV=development next",
+    "build": "npm run clean && cross-env NODE_ENV=production next build",
     "export": "next export",
     "start": "NODE_ENV=production next start",
-    "reset": "rm -rf node_modules .next && yarn",
-    "clean": "rm -rf .next && yarn format",
+    "reset": "rm -rf node_modules .next && npm install",
+    "clean": "rm -rf .next && npm run format",
     "ssr-windows": "cross-env NODE_ENV=production && node server/production-server.js",
     "ssr-linux": "cross-env NODE_ENV=production node server/production-server.js"
   },

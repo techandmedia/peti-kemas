@@ -20,3 +20,32 @@
 .login-form-button {
   width: 100%;
 }
+
+.background-image {
+  margin-top: 10px;
+  min-height: 480px;
+  width: 100%;
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+
+  /******* INI ERROR??
+  /* background-image: url("images/containers-login-page.jpg"); */
+}
+
+/* .background-image::after {
+  opacity: 0.5;
+} */
+
+.new-background {
+  margin-top: "10px";
+  min-height: "880px";
+  height: "100%";
+  width: "100%";
+  background-position: "center";
+  background-repeat: "no-repeat";
+  background-size: "cover";
+  background: white;
+  z-index: 999;
+  opacity: 0.8;
+}
