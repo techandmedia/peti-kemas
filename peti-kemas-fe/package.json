@@ -21,7 +21,8 @@
     "next": "^9.2.0",
     "null-loader": "^3.0.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "recharts": "^2.0.0-beta.1"
   },
   "license": "ISC",
   "devDependencies": {

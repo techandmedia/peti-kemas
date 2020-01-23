@@ -97,8 +97,8 @@ function SideMenu() {
     <Sider width={200} style={{ background: '#fff' }}>
       <Menu
         mode='inline'
-        defaultSelectedKeys={['perbaikan']}
-        defaultOpenKeys={['main-menu']}
+        // defaultSelectedKeys={['perbaikan']}
+        // defaultOpenKeys={['main-menu']}
         style={{ height: '100%', borderRight: 0 }}>
         <SubMenu
           key='main-menu'
@@ -108,7 +108,11 @@ function SideMenu() {
               Pelanggan
             </span>
           }>
-          <Menu.Item key='perbaikan'>Perbaikan</Menu.Item>
+          <Menu.Item key='perbaikan'>
+            <Link href='/dashboard/perbaikan'>
+              <a>Perbaikan</a>
+            </Link>
+          </Menu.Item>
         </SubMenu>
         <SubMenu
           key='laporan'
@@ -118,8 +122,16 @@ function SideMenu() {
               Laporan
             </span>
           }>
-          <Menu.Item key='pembayaran'>Pembayaran</Menu.Item>
-          <Menu.Item key='pelanggan'>Pelanggan</Menu.Item>
+          <Menu.Item key='pembayaran'>
+            <Link href='/dashboard/laporan-pembayaran'>
+              <a>Pembayaran</a>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key='pelanggan'>
+            <Link href='/dashboard/laporan-pelanggan'>
+              <a>Pelanggan</a>
+            </Link>
+          </Menu.Item>
         </SubMenu>
         <Menu.Item key='logout'>
           <a>Logout</a>
