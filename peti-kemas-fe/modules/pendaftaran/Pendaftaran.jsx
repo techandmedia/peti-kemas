@@ -3,7 +3,7 @@ import {
   formItemLayout,
   tailFormItemLayout,
 } from 'components/form-item-layout';
-import { formFields } from './form-fields';
+import formRecords from './form-fields';
 
 export default class RegistrationForm extends React.Component {
   state = {
@@ -36,7 +36,7 @@ export default class RegistrationForm extends React.Component {
             type: 'error',
             results: {
               title: 'UPLOAD ERROR',
-              message: 'Anda belum melakukan upload bukti DP'
+              message: 'Anda belum melakukan upload bukti DP',
             },
           });
         }
@@ -46,6 +46,8 @@ export default class RegistrationForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { ID, records } = this.props;
+    const formFields = formRecords(records);
 
     return (
       <Form {...formItemLayout} onSubmit={this.handlePendaftaran}>
@@ -63,6 +65,11 @@ export default class RegistrationForm extends React.Component {
               </Form.Item>
             );
           }
+
+          if (ID === 'pendaftaran' && form.field === 'nomor_antrian') {
+            return null;
+          }
+
           return (
             <Form.Item
               key={form.label}

@@ -7,7 +7,9 @@ export default function customColumns(dispatchModal) {
       title: "Tanggal Daftar",
       dataIndex: "created_at",
       key: "created_at",
-      render: date => <span>{moment(date).format("DD MMMM YYYY HH:mm:ss")}</span>
+      render: date => (
+        <span>{moment(date).format("DD MMMM YYYY HH:mm:ss")}</span>
+      )
     },
     {
       title: "Nomor Antrian",
@@ -20,7 +22,16 @@ export default function customColumns(dispatchModal) {
       key: "nama_lengkap",
       render: nama => (
         <Tooltip title="Klik untuk membuat perubahan">
-          <a onClick={() => dispatchModal({ type: 'success', results: { title: "Edit Daftar Perbaikan" } })}>{nama}</a>
+          <a
+            onClick={() =>
+              dispatchModal({
+                type: "success",
+                results: { title: "Edit Daftar Perbaikan" }
+              })
+            }
+          >
+            {nama}
+          </a>
         </Tooltip>
       )
     },
@@ -74,7 +85,6 @@ export default function customColumns(dispatchModal) {
       render: image => (
         <Tooltip title="Klik untuk melihat bukti bayar">
           <img
-            onClick={() => dispatchModal({ type: 'success', results: { title: "Lihat DP Pembayaran" } })}
             style={{ height: 20 }}
             alt="example"
             src={`http://localhost:3001/files/bukti-bayar-dp/${image}`}
@@ -84,5 +94,5 @@ export default function customColumns(dispatchModal) {
     }
   ];
 
-  return columns
+  return columns;
 }

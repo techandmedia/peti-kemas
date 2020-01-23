@@ -67,8 +67,12 @@ export class PendaftaranService {
       select: [
         'id_pendaftaran',
         'nomor_antrian',
+        'nik',
         'nama_lengkap',
         'nama_perusahaan',
+        'alamat_lengkap',
+        'nomor_telepon',
+        'email',
         'jumlah_peti_kemas',
         'status_perbaikan',
         'created_at',

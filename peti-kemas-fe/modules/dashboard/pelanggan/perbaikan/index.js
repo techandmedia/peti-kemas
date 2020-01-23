@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Table, Typography } from "antd";
+import { Table, Typography, Divider } from "antd";
 import { StatusContext } from "utils/context/Global-Context";
 import Modal, { useModal } from "components/modal";
 import usePostData from "utils/api/usePostData";
+
+import FormEdit from "./form";
 import customColumns from "./utils/columns";
 
 const { Title } = Typography;
@@ -24,6 +26,10 @@ export default function DaftarPerbaikanPelanggan() {
     }
   }, [status]);
 
+  useEffect(() => {
+    console.log(records);
+  }, [records]);
+
   const Header = () => (
     <Title level={2} style={{ textAlign: "center", color: "orangered" }}>
       DAFTAR PERBAIKAN Peti Kemas CV. BMC
@@ -33,19 +39,18 @@ export default function DaftarPerbaikanPelanggan() {
   return (
     <React.Fragment>
       <Modal modal={modal} dispatchModal={dispatchModal}>
-        {records !== null && records.nama_lengkap} adalah pemilik {records !== null && records.nama_perusahaan}
-        {() => {
-          if (records !== null) {
-            const image = records.bukti_bayar_dp
-            return <img alt="bukti-bayar"
-              src={`http://localhost:3001/files/bukti-bayar-dp/${image}`} />
-          }
-        }}
+        {records !== null && records.nama_lengkap} adalah pemilik{" "}
+        {records !== null && records.nama_perusahaan}
+        <Divider />
         <img
           // height={600}
           width={300}
           alt="bukti-bayar"
-          src={`http://localhost:3001/files/bukti-bayar-dp/${records !== null && records.bukti_bayar_dp}`} />
+          src={`http://localhost:3001/files/bukti-bayar-dp/${records !== null &&
+            records.bukti_bayar_dp}`}
+        />
+        <Divider />
+        <FormEdit records={records} />
       </Modal>
       <Table
         title={() => <Header />}
