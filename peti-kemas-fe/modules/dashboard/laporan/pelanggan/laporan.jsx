@@ -1,5 +1,6 @@
 import { Divider, Typography } from 'antd';
 const { Title } = Typography;
+import Description from './laporan-description';
 
 export default function Laporan() {
   return (
@@ -11,29 +12,7 @@ export default function Laporan() {
         // borderRadius: 15,
         padding: 10,
       }}>
-      <Title level={4} style={{ textAlign: 'center', color: 'black' }}>
-        Laporan Bulan Januari 2020
-      </Title>
-      <ol>
-        <li>Jumlah Pelanggan</li>
-
-        <li>Jumlah Perbaikan</li>
-
-        <li>Jumlah Peti Kemas</li>
-      </ol>
-
-      <Divider />
-
-      <Title level={4} style={{ textAlign: 'center', color: 'black' }}>
-        Laporan Tahun 2020
-      </Title>
-      <ol>
-        <li>Jumlah Pelanggan</li>
-
-        <li>Jumlah Perbaikan</li>
-
-        <li>Jumlah Peti Kemas</li>
-      </ol>
+      <Description />
     </div>
   );
 }

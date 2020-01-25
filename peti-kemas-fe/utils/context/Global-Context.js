@@ -16,8 +16,8 @@ const akunSaya = ["akun saya"];
 
 export default function GlobalProvider(props) {
   const [user, dispatchUser] = useReducer(userReducer, {
-    // isUserLoggedIn: false,
-    isUserLoggedIn: true,
+    isUserLoggedIn: false,
+    // isUserLoggedIn: true,
     defaultPage: "/",
     /**
      * Modul di dalam dashboard

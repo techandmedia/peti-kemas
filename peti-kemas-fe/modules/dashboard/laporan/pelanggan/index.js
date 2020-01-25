@@ -21,7 +21,9 @@ export default function LaporanPelanggan() {
           Chart Pelanggan
         </Title>
         <Divider />
-        <Grafix />
+        <div style={{ marginTop: "75px" }}>
+          <Grafix />
+        </div>
       </Col>
     </Row>
   );
