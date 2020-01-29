@@ -14,6 +14,22 @@ export class PendaftaranService {
 
   logger = new Logger('Pendaftaran Service');
 
+  async getAntrianByEmail(email): Promise<Pendaftaran> {
+    const found = await this.pendaftaranRepository.findOne({
+      where: { email },
+    });
+
+    console.log('FOUND', found);
+
+    if (!found) {
+      throw new NotFoundException(
+        `Antrian dengan email "${email}" belum terdaftar`,
+      );
+    }
+
+    return found;
+  }
+
   async createPendaftaran(
     createPendaftaranDto: CreatePendaftaranDto,
   ): Promise<Pendaftaran> {
@@ -88,6 +104,21 @@ export class PendaftaranService {
       title: 'Data Pendaftar',
       message: 'Data Pendaftar',
       data: query,
+    };
+  }
+
+  async updatePendaftaran(
+    updatePendaftaranDto: CreatePendaftaranDto,
+  ): Promise<any> {
+    const { email, nomor_antrian } = updatePendaftaranDto;
+    const pendaftar = await this.getAntrianByEmail(email);
+    pendaftar.nomor_antrian = nomor_antrian;
+    await pendaftar.save();
+    return {
+      code: 201,
+      title: 'Update Pendaftar',
+      message: 'Berhasil memberikan nomor antrian',
+      data: pendaftar,
     };
   }
 }

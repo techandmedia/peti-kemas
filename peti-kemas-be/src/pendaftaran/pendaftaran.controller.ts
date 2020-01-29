@@ -22,6 +22,10 @@ export class PendaftaranController {
         query = this.pendaftaran.createPendaftaran(createPendaftarDto);
         break;
 
+      case 'update-pendaftaran':
+        query = this.pendaftaran.updatePendaftaran(createPendaftarDto);
+        break;
+
       case 'get-page':
         query = this.pendaftaran.getPagePendaftaran(page, amount);
         break;

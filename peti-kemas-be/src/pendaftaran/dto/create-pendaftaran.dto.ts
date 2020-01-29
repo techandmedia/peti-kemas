@@ -18,7 +18,7 @@ export class CreatePendaftaranDto {
   @IsNotEmpty()
   bukti_bayar_dp: string;
 
+  nomor_antrian: string;
   nama_perusahaan: string;
-
   email: string;
 }

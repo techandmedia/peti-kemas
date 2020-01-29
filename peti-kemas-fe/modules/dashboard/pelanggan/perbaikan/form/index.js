@@ -1,17 +1,13 @@
 import { useState, useEffect, useContext } from "react";
 import { StatusContext } from "utils/context/Global-Context";
 import usePostData from "utils/api/usePostData";
-import { Form } from "antd";
 import Modal, { useModal } from "components/modal";
-import Pendaftaran from "../../../../pendaftaran/Pendaftaran";
-
-const FormPendaftaran = Form.create({ name: "register" })(Pendaftaran);
+import PemberianNomorAntrian from "./PemberianNomorAntrian";
 
 export default function Index({ records }) {
   const { setStatus } = useContext(StatusContext);
-  const [daftar, postDaftar] = usePostData("", "");
+  const [daftar, updatePendaftaran] = usePostData("", "");
   const [modal, dispatchModal] = useModal();
-  const [imgPath, setPath] = useState("");
 
   useEffect(() => {
     const { isLoading, isError, code } = daftar;
@@ -33,10 +29,9 @@ export default function Index({ records }) {
   return (
     <React.Fragment>
       <Modal modal={modal} dispatchModal={dispatchModal} />
-      <FormPendaftaran
+      <PemberianNomorAntrian
         records={records}
-        imgPath={imgPath}
-        postDaftar={postDaftar}
+        updatePendaftaran={updatePendaftaran}
         dispatchModal={dispatchModal}
       />
     </React.Fragment>
