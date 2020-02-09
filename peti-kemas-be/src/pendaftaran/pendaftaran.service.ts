@@ -1,7 +1,7 @@
 import { CreatePendaftaranDto } from './dto/create-pendaftaran.dto';
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Like } from 'typeorm';
+import { Like, createQueryBuilder } from 'typeorm';
 import { Pendaftaran } from './pendaftaran.entity';
 import { PendaftaranRepository } from './pendaftaran.repository';
 
@@ -132,5 +132,13 @@ export class PendaftaranService {
       message: 'Berhasil memberikan nomor antrian',
       data: pendaftar,
     };
+  }
+
+  async getNumberOfCustomer() {
+    const results = this.pendaftaranRepository
+      .createQueryBuilder('pendaftaran')
+      .distinctOn(['pendaftaran.nama_perusahaan']);
+
+    console.log('RESULTS', results);
   }
 }

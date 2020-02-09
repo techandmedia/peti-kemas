@@ -30,6 +30,10 @@ export class PendaftaranController {
         query = this.pendaftaran.getPagePendaftaran(page, amount);
         break;
 
+      case 'get-jumlah-pelanggan':
+        query = this.pendaftaran.getNumberOfCustomer();
+        break;
+
       case 'get-all':
         query = this.pendaftaran.getAllPendaftaran();
         break;
