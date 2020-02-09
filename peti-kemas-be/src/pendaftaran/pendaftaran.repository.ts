@@ -22,6 +22,7 @@ export class PendaftaranRepository extends Repository<Pendaftaran> {
       jumlah_peti_kemas,
       nomor_telepon,
       bukti_bayar_dp,
+      jumlah_dp,
     } = pendaftaranUjianDto;
 
     const pendaftaran = new Pendaftaran();
@@ -34,6 +35,7 @@ export class PendaftaranRepository extends Repository<Pendaftaran> {
     pendaftaran.status_perbaikan = StatusPerbaikan.DAFTAR;
     pendaftaran.nomor_telepon = nomor_telepon;
     pendaftaran.bukti_bayar_dp = bukti_bayar_dp;
+    pendaftaran.jumlah_dp = jumlah_dp;
 
     try {
       await pendaftaran.save();

@@ -1,4 +1,4 @@
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, InputNumber } from 'antd';
 import {
   formItemLayout,
   tailFormItemLayout,
@@ -16,6 +16,11 @@ export default class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         // console.log('Received values of form: ', values, this.props.imgPath);
+        console.log(
+          'Received values of form: ',
+          values.jumlah_dp,
+          typeof values.jumlah_dp,
+        );
         /**
          * Hanya jika sudah upload DP, baru bisa daftar
          */
@@ -29,6 +34,7 @@ export default class RegistrationForm extends React.Component {
             nomor_telepon: values.nomor_telepon,
             email: values.email,
             jumlah_peti_kemas: parseInt(values.jumlah_peti_kemas),
+            jumlah_dp: values.jumlah_dp,
             bukti_bayar_dp: this.props.imgPath,
           });
         } else {
@@ -42,6 +48,10 @@ export default class RegistrationForm extends React.Component {
         }
       }
     });
+  };
+
+  onChange = value => {
+    console.log('changed', value);
   };
 
   render() {
@@ -62,6 +72,25 @@ export default class RegistrationForm extends React.Component {
                   initialValue: form.initialValue,
                   rules: form.rules,
                 })(<Input />)}
+              </Form.Item>
+            );
+          }
+
+          if (form.field === 'jumlah_dp') {
+            return (
+              <Form.Item key={form.label} label='Jumlah DP'>
+                {getFieldDecorator(form.field, {
+                  initialValue: null,
+                  rules: form.rules,
+                })(
+                  <InputNumber
+                    formatter={value =>
+                      `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                    }
+                    parser={value => value.replace(/\Rp\s?|(,*)/g, '')}
+                    onChange={this.onChange}
+                  />,
+                )}
               </Form.Item>
             );
           }

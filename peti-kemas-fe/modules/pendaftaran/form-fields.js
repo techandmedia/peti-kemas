@@ -76,6 +76,16 @@ export default function formRecords(records) {
       initialValue: record.email
     },
     {
+      label: "jumlah down payment",
+      field: "jumlah_dp",
+      rules: [
+        {
+          required: true,
+          message: "masukkan jumlah down payment!"
+        }
+      ]
+    },
+    {
       label: "jumlah peti kemas",
       field: "jumlah_peti_kemas",
       initialValue: record.jumlah_peti_kemas,

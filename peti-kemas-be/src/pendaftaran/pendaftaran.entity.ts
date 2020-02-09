@@ -40,6 +40,15 @@ export class Pendaftaran extends BaseEntity {
   bukti_bayar_dp: string;
 
   @Column()
+  jumlah_dp: number;
+
+  @Column()
+  jumlah_sisa: number;
+
+  @Column()
+  jumlah_total: number;
+
+  @Column()
   status_perbaikan: StatusPerbaikan;
 
   @Column()
