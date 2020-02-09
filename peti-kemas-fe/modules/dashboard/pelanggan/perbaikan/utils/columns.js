@@ -1,7 +1,10 @@
 import { Tag, Tooltip } from "antd";
+import Modal, { useModal } from "components/modal";
 import moment from "moment";
 
 export default function customColumns(dispatchModal) {
+  const [modalGambar, dispatchModalGambar] = useModal();
+
   const columns = [
     {
       title: "Tanggal Daftar",
@@ -83,13 +86,28 @@ export default function customColumns(dispatchModal) {
       dataIndex: "bukti_bayar_dp",
       key: "bukti_bayar_dp",
       render: image => (
-        <Tooltip title="Klik untuk melihat bukti bayar">
+        <React.Fragment>
+          {/* <Modal modal={modalGambar} dispatchModal={dispatchModalGambar}>
+            <img
+              width={600}
+              alt="bukti-bayar"
+              src={`http://localhost:3001/files/bukti-bayar-dp/${image}`}
+            />
+          </Modal>
+          <Tooltip title="Klik untuk melihat bukti bayar" style={{ cursor: 'pointer' }}> */}
           <img
-            style={{ height: 20 }}
+            onClick={() =>
+              dispatchModalGambar({
+                type: "success",
+                results: { title: "Bukti Bayar DP" }
+              })
+            }
+            style={{ height: 20, cursor: "pointer" }}
             alt="example"
             src={`http://localhost:3001/files/bukti-bayar-dp/${image}`}
           />
-        </Tooltip>
+          {/* </Tooltip> */}
+        </React.Fragment>
       )
     }
   ];

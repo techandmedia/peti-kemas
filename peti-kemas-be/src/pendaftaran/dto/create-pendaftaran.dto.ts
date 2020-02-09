@@ -23,4 +23,6 @@ export class CreatePendaftaranDto {
   nama_perusahaan: string;
   email: string;
   status_perbaikan: string;
+  jumlah_sisa: number;
+  jumlah_total: number;
 }

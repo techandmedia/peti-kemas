@@ -96,6 +96,23 @@ export default function formRecords(records) {
           message: "masukkan jumlah peti kemas!"
         }
       ]
+    },
+    {
+      label: "jumlah dp",
+      field: "jumlah_dp",
+      initialValue: record.jumlah_dp,
+      disabled: true
+    },
+    {
+      label: "total tagihan (rp)",
+      field: "jumlah_total",
+      initialValue: record.jumlah_total,
+      rules: [
+        {
+          required: true,
+          message: "masukkan total tagihan!"
+        }
+      ]
     }
   ];
 

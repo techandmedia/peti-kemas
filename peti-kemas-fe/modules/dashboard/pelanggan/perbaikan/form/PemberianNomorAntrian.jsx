@@ -20,11 +20,15 @@ class PemberianNomorAntrian extends React.Component {
          * Hanya jika sudah upload DP, baru bisa daftar
          */
 
+        const total = parseInt(values.jumlah_total);
+        const sisa = total - values.jumlah_dp;
+
         this.props.updatePendaftaran('pendaftaran', {
           type: 'update-pendaftaran',
           email: values.email,
           nomor_antrian: values.nomor_antrian,
-          status_perbaikan: values.status_perbaikan,
+          jumlah_sisa: sisa,
+          jumlah_total: total,
         });
       }
     });
@@ -48,6 +52,20 @@ class PemberianNomorAntrian extends React.Component {
                   initialValue: form.initialValue,
                   rules: form.rules,
                 })(<Input />)}
+              </Form.Item>
+            );
+          }
+
+          if (form.field === 'jumlah_dp') {
+            return (
+              <Form.Item
+                key={form.label}
+                label='Jumlah DP (Rp)'
+                style={{ marginBottom: '0px' }}>
+                {getFieldDecorator(form.field, {
+                  initialValue: form.initialValue,
+                  rules: form.rules,
+                })(<Input disabled={form.disabled} />)}
               </Form.Item>
             );
           }

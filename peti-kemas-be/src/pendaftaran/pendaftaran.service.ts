@@ -95,6 +95,9 @@ export class PendaftaranService {
         'updated_at',
         'bukti_bayar_dp',
         'bukti_bayar_pelunasan',
+        'jumlah_dp',
+        'jumlah_sisa',
+        'jumlah_total',
       ],
       order: { updated_at: 'DESC' },
     });
@@ -110,10 +113,18 @@ export class PendaftaranService {
   async updatePendaftaran(
     updatePendaftaranDto: CreatePendaftaranDto,
   ): Promise<any> {
-    const { email, nomor_antrian, status_perbaikan } = updatePendaftaranDto;
+    const {
+      email,
+      nomor_antrian,
+      status_perbaikan,
+      jumlah_sisa,
+      jumlah_total,
+    } = updatePendaftaranDto;
     const pendaftar = await this.getAntrianByEmail(email);
     pendaftar.nomor_antrian = nomor_antrian;
     pendaftar.status_perbaikan = status_perbaikan;
+    pendaftar.jumlah_sisa = jumlah_sisa;
+    pendaftar.jumlah_total = jumlah_total;
     await pendaftar.save();
     return {
       code: 201,
