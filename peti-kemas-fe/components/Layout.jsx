@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import { Layout, Menu, Icon, Button, Typography } from 'antd';
-import { MenuContext } from 'utils/context/Global-Context';
-import Modal from 'components/modal';
+import Router from 'next/router';
 import Link from 'next/link';
+import { Layout, Menu, Icon, Button, Typography } from 'antd';
+import { MenuContext, UserContext } from 'utils/context/Global-Context';
+import Modal from 'components/modal';
 
 import Pendaftaran from '../modules/pendaftaran';
 import 'utils/styles/index.css';
@@ -15,7 +16,8 @@ const { Header, Content, Sider } = Layout;
 export default function CustomLayout(props) {
   const { isUserLoggedIn } = props;
   const { modal, dispatchModal } = useContext(MenuContext);
-  const Sidebar = () => isUserLoggedIn && <SideMenu />;
+  const { user, dispatchUser } = useContext(UserContext);
+  const Sidebar = () => isUserLoggedIn && <SideMenu logout={logout} />;
 
   function handleMenu(e) {
     // console.log(e.item.props.name);
@@ -24,6 +26,11 @@ export default function CustomLayout(props) {
     if (key === 'daftar') {
       dispatchModal({ type: 'success', results: { title: name } });
     }
+  }
+
+  function logout() {
+    dispatchUser({ type: 'logout-success' });
+    Router.push('/');
   }
 
   return (
@@ -92,7 +99,7 @@ export default function CustomLayout(props) {
   );
 }
 
-function SideMenu() {
+function SideMenu({ logout }) {
   return (
     <Sider width={200} style={{ background: '#fff' }}>
       <Menu
@@ -134,7 +141,9 @@ function SideMenu() {
           </Menu.Item>
         </SubMenu>
         <Menu.Item key='logout'>
-          <a>Logout</a>
+          <Button onClick={logout}>
+            <a>Logout</a>
+          </Button>
         </Menu.Item>
       </Menu>
     </Sider>

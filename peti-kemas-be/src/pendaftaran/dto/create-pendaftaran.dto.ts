@@ -22,4 +22,5 @@ export class CreatePendaftaranDto {
   nomor_antrian: string;
   nama_perusahaan: string;
   email: string;
+  status_perbaikan: string;
 }

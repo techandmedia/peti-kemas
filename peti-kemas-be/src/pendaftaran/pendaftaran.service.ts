@@ -110,9 +110,10 @@ export class PendaftaranService {
   async updatePendaftaran(
     updatePendaftaranDto: CreatePendaftaranDto,
   ): Promise<any> {
-    const { email, nomor_antrian } = updatePendaftaranDto;
+    const { email, nomor_antrian, status_perbaikan } = updatePendaftaranDto;
     const pendaftar = await this.getAntrianByEmail(email);
     pendaftar.nomor_antrian = nomor_antrian;
+    pendaftar.status_perbaikan = status_perbaikan;
     await pendaftar.save();
     return {
       code: 201,

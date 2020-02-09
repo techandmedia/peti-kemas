@@ -49,7 +49,7 @@ export class Pendaftaran extends BaseEntity {
   jumlah_total: number;
 
   @Column()
-  status_perbaikan: StatusPerbaikan;
+  status_perbaikan: string;
 
   @Column()
   bukti_bayar_pelunasan: string;

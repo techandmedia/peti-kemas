@@ -1,4 +1,4 @@
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Select } from 'antd';
 import {
   formItemLayout,
   tailFormItemLayout,
@@ -24,6 +24,7 @@ class PemberianNomorAntrian extends React.Component {
           type: 'update-pendaftaran',
           email: values.email,
           nomor_antrian: values.nomor_antrian,
+          status_perbaikan: values.status_perbaikan,
         });
       }
     });
@@ -47,6 +48,27 @@ class PemberianNomorAntrian extends React.Component {
                   initialValue: form.initialValue,
                   rules: form.rules,
                 })(<Input />)}
+              </Form.Item>
+            );
+          }
+
+          if (form.field === 'status_perbaikan') {
+            return (
+              <Form.Item
+                key={form.label}
+                label='Status'
+                style={{ marginBottom: '0px' }}>
+                {getFieldDecorator(form.field, {
+                  initialValue: form.initialValue,
+                  rules: form.rules,
+                })(
+                  <Select>
+                    <Select.Option value='DAFTAR'>DAFTAR</Select.Option>
+                    <Select.Option value='ANTRI'>ANTRI</Select.Option>
+                    <Select.Option value='PERBAIKAN'>PERBAIKAN</Select.Option>
+                    <Select.Option value='SELESAI'>SELESAI</Select.Option>
+                  </Select>,
+                )}
               </Form.Item>
             );
           }

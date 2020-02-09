@@ -21,6 +21,17 @@ export default function formRecords(records) {
       ]
     },
     {
+      label: "status perbaikan",
+      field: "status_perbaikan",
+      initialValue: record.status_perbaikan,
+      rules: [
+        {
+          required: true,
+          message: "masukkan status perbaikan!"
+        }
+      ]
+    },
+    {
       label: "nomor ktp",
       field: "nik",
       initialValue: record.nik,

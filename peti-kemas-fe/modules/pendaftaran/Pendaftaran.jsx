@@ -16,11 +16,6 @@ export default class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         // console.log('Received values of form: ', values, this.props.imgPath);
-        console.log(
-          'Received values of form: ',
-          values.jumlah_dp,
-          typeof values.jumlah_dp,
-        );
         /**
          * Hanya jika sudah upload DP, baru bisa daftar
          */

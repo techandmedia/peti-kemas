@@ -60,7 +60,7 @@ export default function customColumns(dispatchModal) {
             color = "red";
             break;
 
-          case "SEDANG PERBAIKAN":
+          case "PERBAIKAN":
             color = "green";
             break;
 
